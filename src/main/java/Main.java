@@ -1,35 +1,53 @@
+import java.io.File;
+import java.nio.channels.FileLockInterruptionException;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
 public class Main {
 
-    public static void main(String[]args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
+        ArrayList<Double>results=new ArrayList<Double>();
+        File f=new File("results.txt");
         //First Screen
 
         System.out.println("Welcome to currency converter");
         System.out.println("Please Choose an option");
         System.out.println("1.Dollars to Shekels");
         System.out.println("2.Shekels to Dollars");
-        Scanner scanner1=new Scanner(System.in);
-        int option =scanner1.nextInt();
-        while (option !=1 && option!= 2) {
-            throw new Exception("wrong input");
-        }
-
+        Scanner scanner = new Scanner(System.in);
+        int option = 0;
+        do {
+            try {
+                // Get input
+                option = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                scanner.nextLine(); // clears the buffer
+                System.out.println("Invalid choice Please try again");
+            }
+        } while (option != 1 && option != 2);
 
         //Second Screen
         System.out.println("Please enter an amount to convert");
-        Scanner scanner2=new Scanner(System.in);
-        double amount =scanner2.nextDouble();
+        double input=0;
+        boolean flag=true;
+        do {
+            try {
+                // Get input
+                input = scanner.nextDouble();
+                flag=false;
+            } catch (InputMismatchException e) {
+                scanner.nextLine(); // clears the buffer
+                System.out.println("Invalid choice Please try again");
+            }
+        }while(flag);
 
+        //Third Screen
 
-
-
-//    Coin ilsValue=CoinFactory.getCoininstance(Coin.USD);
-//
-//    double value=usd.calculate(input);
+//        // Fourth Screen
+//        System.out.println("Thanks for using our currency convertor");
 
     }
-
 }
