@@ -1,6 +1,6 @@
 public class CoinFactory {
 
-    //this method return new coin
+    //this method create new coin
     public static Coin getCoininstance(Coins coin){
         switch(coin){
             case ILS:
