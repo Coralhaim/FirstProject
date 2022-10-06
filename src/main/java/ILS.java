@@ -7,7 +7,7 @@
     }
 
     @Override
-    public double calculate(double value) {
-        return getValue()/value;
+    public double calculate(double input) {
+        return input*getValue();
     }
 }
